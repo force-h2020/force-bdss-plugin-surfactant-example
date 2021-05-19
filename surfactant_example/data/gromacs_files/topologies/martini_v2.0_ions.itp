@@ -1,0 +1,37 @@
+; MARTINI FORCEFIELD V2.0
+;
+; SJ MARRINK, 01-07-2007
+;             last update: 22-02-2011
+;
+; please cite:
+;
+; S.J. Marrink, H.J. Risselada, S. Yefimov, D.P. Tieleman, A.H. de Vries.
+; The MARTINI forcefield: coarse grained model for biomolecular simulations.
+; JPC-B, 111:7812-7824, 2007.
+;
+; and (if using lipid topologies):
+;
+; S.J. Marrink, A.H. de Vries, A.E. Mark.
+; Coarse grained model for semi-quantitative lipid simulations.
+; JPC-B, 108:750-760, 2004.
+
+
+;;;;;;;;;; SODIUM ION
+[moleculetype]
+; molname       nrexcl
+  NA            1
+
+[atoms]
+;id     type    resnr   residu  atom    cgnr    charge
+ 1      Qd      1       ION     NA      1       1.0   22.9898
+
+
+;;;;;; CHLORIDE ION
+
+[moleculetype]
+; molname   nrexcl
+  CL       1
+
+[atoms]
+;id     type    resnr   residu  atom    cgnr    charge
+ 1  Qa  1   ION    CL     1   -1.0    35.453

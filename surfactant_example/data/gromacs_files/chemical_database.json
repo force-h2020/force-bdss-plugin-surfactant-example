@@ -1,0 +1,80 @@
+{
+  "Sodium Dodecyl Sulfate": {
+    "role": "Surfactant",
+    "price": 100,
+    "fragments": [
+      {
+        "name": "Dodecyl Sulfate",
+        "symbol": "SDS",
+        "topology": "topologies/martini_v2.0_sds.itp",
+        "coordinate": "coordinates/sds.gro"
+      },
+      {
+        "name": "Sodium",
+        "symbol": "NA",
+        "topology": "topologies/martini_v2.0_ions.itp",
+        "coordinate": "coordinates/ions.gro"
+      }
+    ]
+  },
+  "Dodecyl Phosphocholine": {
+    "role": "Surfactant",
+    "price": 150,
+    "fragments": [
+      {
+        "name": "Dodecyl Phosphocholine",
+        "symbol": "DPC",
+        "topology": "topologies/martini_v2.0_dpc.itp",
+        "coordinate": "coordinates/dpc.gro"
+      }
+    ]
+  },
+  "Sodium Laureth Sulfate": {
+    "role": "Surfactant",
+    "price": 220,
+    "fragments": [
+      {
+        "name": "Lauryl Ether Sulfate",
+        "symbol": "SL1",
+        "topology": "topologies/martini_v2.2_sles.itp",
+        "coordinate": "coordinates/sles1.gro"
+      },
+      {
+        "name": "Sodium",
+        "symbol": "NA",
+        "topology": "topologies/martini_v2.0_ions.itp",
+        "coordinate": "coordinates/ions.gro"
+      }
+    ]
+  },
+  "Sodium Chloride": {
+    "role": "Salt",
+    "price": 1,
+    "fragments": [
+      {
+        "name": "Sodium",
+        "symbol": "NA",
+        "topology": "topologies/martini_v2.0_ions.itp",
+        "coordinate": "coordinates/ions.gro"
+      },
+      {
+        "name": "Chloride",
+        "symbol": "CL",
+        "topology": "topologies/martini_v2.0_ions.itp",
+        "coordinate": "coordinates/ions.gro"
+      }
+    ]
+  },
+  "Water": {
+    "role": "Solvent",
+    "price": 0.1,
+    "fragments": [
+      {
+        "name": "Water",
+        "symbol": "W",
+        "topology": "topologies/martini_v2.0_solvent.itp",
+        "coordinate": "coordinates/water.gro"
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+;;;;;; Martini lipid topology for dodecylphosphocholine
+;
+; Description:
+;   A Martini model of dodecylphosphocholine (DPC) also called n-dodecylphosphocholine or
+;   monoalkylphosphocholine-12 (MAPCHO-12).
+;
+
+[ moleculetype ]
+; molname      nrexcl
+  DPC         1
+
+[ atoms ]
+; id 	type 	resnr 	residu 	atom 	cgnr 	charge   mass
+  1 	Q0 	1 	DPC 	NC3 	1 	1.0    50.0388
+  2 	Qa 	1 	DPC 	PO4 	2 	-1.0  94.9714
+  3 	C1 	1 	DPC 	C1  	3 	0   56.108
+  4 	C1 	1 	DPC 	C2  	4 	0   56.108
+  5 	C1 	1 	DPC 	C3  	5 	0   57.116
+
+[ bonds ]
+; i j 	funct 	length 	force.c.
+  1  2 	1 	0.47 	1250
+  2  3 	1 	0.47 	1250
+  3  4 	1 	0.47 	1250
+  4  5 	1 	0.47 	1250
+
+[ angles ]
+; i j k 	funct 	angle 	force.c.
+  3  4  5 	2 	180.0 	25.0

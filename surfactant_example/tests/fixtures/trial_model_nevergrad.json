@@ -1,0 +1,273 @@
+{
+    "version": "1.1",
+    "workflow": {
+        "mco_model": {
+            "id": "force.bdss.surfactant.plugin.example.v0.factory.surfactant_nevergrad_mco",
+            "model_data": {
+                "algorithms": "TwoPointsDE",
+                "budget": 1000,
+                "verbose_run": true,
+                "parameters": [
+                    {
+                        "id": "force.bdss.surfactant.plugin.example.v0.factory.surfactant_nevergrad_mco.parameter.ingredient",
+                        "model_data": {
+                            "categories": [
+                                "Sodium Dodecyl Sulfate",
+                                "Dodecyl Phosphocholine"
+                            ],
+                            "name": "surfactant_1_name",
+                            "type": "NAME"
+                        }
+                    },
+                    {
+                        "id": "force.bdss.surfactant.plugin.example.v0.factory.surfactant_nevergrad_mco.parameter.ingredient",
+                        "model_data": {
+                            "categories": [
+                                "Sodium Laureth Sulfate"
+                            ],
+                            "name": "surfactant_2_name",
+                            "type": "NAME"
+                        }
+                    },
+                    {
+                        "id": "force.bdss.surfactant.plugin.example.v0.factory.surfactant_nevergrad_mco.parameter.ranged",
+                        "model_data": {
+                            "lower_bound": 10.0,
+                            "upper_bound": 15.0,
+                            "initial_value": 12.5,
+                            "n_samples": 15,
+                            "name": "surfactant_1_conc",
+                            "type": "CONCENTRATION"
+                        }
+                    },
+                    {
+                        "id": "force.bdss.surfactant.plugin.example.v0.factory.surfactant_nevergrad_mco.parameter.ranged",
+                        "model_data": {
+                            "lower_bound": 5.0,
+                            "upper_bound": 10.0,
+                            "initial_value": 7.5,
+                            "n_samples": 5,
+                            "name": "surfactant_2_conc",
+                            "type": "CONCENTRATION"
+                        }
+                    },
+                    {
+                        "id": "force.bdss.surfactant.plugin.example.v0.factory.surfactant_nevergrad_mco.parameter.ranged",
+                        "model_data": {
+                            "lower_bound": 0.5,
+                            "upper_bound": 5.0,
+                            "initial_value": 2.75,
+                            "n_samples": 10,
+                            "name": "salt_conc",
+                            "type": "CONCENTRATION"
+                        }
+                    }
+                ],
+                "kpis": [
+                    {
+                        "name": "viscosity",
+                        "objective": "MAXIMISE",
+                        "auto_scale": true,
+                        "scale_factor": 0.0
+                    },
+                    {
+                        "name": "cost",
+                        "objective": "MINIMISE",
+                        "auto_scale": true,
+                        "scale_factor": 50.0
+                    }
+                ]
+            }
+        },
+        "execution_layers": [
+            {
+                "data_sources": [
+                    {
+                        "id": "force.bdss.surfactant.plugin.example.v0.factory.database",
+                        "model_data": {
+                            "input_mode": "Parameter",
+                            "name": "",
+                            "input_slot_info": [
+                                {
+                                    "source": "Environment",
+                                    "name": "surfactant_1_name"
+                                }
+                            ],
+                            "output_slot_info": [
+                                {
+                                    "name": "surfactant_1_ingredient"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": "force.bdss.surfactant.plugin.example.v0.factory.database",
+                        "model_data": {
+                            "input_mode": "Parameter",
+                            "name": "",
+                            "input_slot_info": [
+                                {
+                                    "source": "Environment",
+                                    "name": "surfactant_2_name"
+                                }
+                            ],
+                            "output_slot_info": [
+                                {
+                                    "name": "surfactant_2_ingredient"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": "force.bdss.surfactant.plugin.example.v0.factory.database",
+                        "model_data": {
+                            "input_mode": "Model",
+                            "name": "Sodium Chloride",
+                            "input_slot_info": [],
+                            "output_slot_info": [
+                                {
+                                    "name": "salt_ingredient"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": "force.bdss.surfactant.plugin.example.v0.factory.database",
+                        "model_data": {
+                            "input_mode": "Model",
+                            "name": "Water",
+                            "input_slot_info": [],
+                            "output_slot_info": [
+                                {
+                                    "name": "solvent_ingredient"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "data_sources": [
+                    {
+                        "id": "force.bdss.surfactant.plugin.example.v0.factory.formulation",
+                        "model_data": {
+                            "n_surfactants": 2,
+                            "input_slot_info": [
+                                {
+                                    "source": "Environment",
+                                    "name": "surfactant_1_ingredient"
+                                },
+                                {
+                                    "source": "Environment",
+                                    "name": "surfactant_1_conc"
+                                },
+                                {
+                                    "source": "Environment",
+                                    "name": "surfactant_2_ingredient"
+                                },
+                                {
+                                    "source": "Environment",
+                                    "name": "surfactant_2_conc"
+                                },
+                                {
+                                    "source": "Environment",
+                                    "name": "salt_ingredient"
+                                },
+                                {
+                                    "source": "Environment",
+                                    "name": "salt_conc"
+                                },
+                                {
+                                    "source": "Environment",
+                                    "name": "solvent_ingredient"
+                                }
+                            ],
+                            "output_slot_info": [
+                                {
+                                    "name": "formulation"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                "data_sources": [
+                    {
+                        "id": "force.bdss.surfactant.plugin.example.v0.factory.trial_viscosity",
+                        "model_data": {
+                            "ingredient_models": [
+                                {
+                                    "name": "Sodium Dodecyl Sulfate",
+                                    "mean": 12.0,
+                                    "sigma": 0.3
+                                },
+                                {
+                                    "name": "Dodecyl Phosphocholine",
+                                    "mean": 11.0,
+                                    "sigma": 0.7
+                                },
+                                {
+                                    "name": "Sodium Laureth Sulfate",
+                                    "mean": 8.0,
+                                    "sigma": 0.5
+                                },
+                                {
+                                    "name": "Sodium Chloride",
+                                    "mean": 2.5,
+                                    "sigma": 1.0
+                                }
+                            ],
+                            "calculation_mode": "Sum",
+                            "input_slot_info": [
+                                {
+                                    "source": "Environment",
+                                    "name": "formulation"
+                                }
+                            ],
+                            "output_slot_info": [
+                                {
+                                    "name": "viscosity"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "id": "force.bdss.surfactant.plugin.example.v0.factory.cost",
+                        "model_data": {
+                            "threshold": 0.0,
+                            "input_slot_info": [
+                                {
+                                    "source": "Environment",
+                                    "name": "formulation"
+                                }
+                            ],
+                            "output_slot_info": [
+                                {
+                                    "name": "cost"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        ],
+        "notification_listeners": [
+            {
+                "id": "force.bdss.gromacs.plugin.wrapper.v0.factory.hpc_writer",
+                "model_data": {
+                    "header": "",
+                    "prefix": "hpc_sub_script",
+                    "dry_run": true
+                }
+            },
+            {
+                "id": "force.bdss.surfactant.plugin.example.v0.factory.surfactant_csv_writer",
+                "model_data": {
+                    "dry_run": true,
+                    "path": "output.csv"
+                }
+            }
+        ]
+    }
+}

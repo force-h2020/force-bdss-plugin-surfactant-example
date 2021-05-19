@@ -1,0 +1,2 @@
+[flake8]
+exclude = build/*,doc/source/*,force-bdss*/*,force-wfmanager/*
