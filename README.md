@@ -15,7 +15,7 @@ To install the ``force-bdss-plugin-gromacs`` package, please see the following [
 
 Afterwards, clone the git repository
 
-    git clone https://gitlab.cc-asp.fraunhofer.de/Force/force-bdss-plugin-unilever-example.git
+    git clone https://github.com/force-h2020/force-bdss-plugin-surfactant-example.git
 
 After downloading, enter the source directory and run:
 
